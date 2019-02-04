@@ -1,0 +1,6 @@
+---
+# defaults file for infra_server_os_users
+
+os_users:
+  - { name: git, password: gitpass,  groups: [] }
+  - { name: testuser, password: testpass, groups: ['group1', 'group2'] }

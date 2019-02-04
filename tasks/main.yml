@@ -1,0 +1,19 @@
+---
+# tasks file for infra_server_os_users
+
+# Create groups first
+- name: Create groups first
+  group:
+    name: "{{ item.1 }}"
+    state: present
+  with_subelements:
+    - "{{ os_users }}"
+    - groups
+
+# Create users
+- name: Create users
+  user:
+    name: "{{ item.name }}"
+    password: "{{ item.password }}"
+    groups: "{{ item.groups }}"
+  with_items: "{{ os_users }}"
